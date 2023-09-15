@@ -1,0 +1,91 @@
+@use 'reset';
+@use 'fonts';
+@import 'variaveis';
+
+//funções
+@function pxParaRem($valorPx, $ValorRem: 16) {
+    @return ($valorPx / $ValorRem) * 1rem;
+}
+
+// fim funções
+
+
+.container-login {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100vh;
+
+    .secao-login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 550px;
+        height: inherit;
+        background-color: #ffffff;
+
+        #brand{
+            margin-right: auto;
+            font-size: pxParaRem(52);
+        }
+        #titulo-pagina {
+            font-size: pxParaRem(45);
+        }
+
+        .formulario-login {
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            row-gap: 30px;
+            height: inherit;
+
+            input {
+                font-size: pxParaRem(18);
+                width: inherit;
+                border-radius: 5px;
+                outline: none;
+                background-color: transparent;
+                border: 1px solid $corPrimaria;
+                padding-left: 5px;
+                height: 50px;
+                transition: all .5ms;
+
+                &:focus{
+                    border: 1px solid rgba($corPrimaria,.6);
+                    transition: all .5ms;
+                    background-color: rgba($corPrimaria,.6);
+
+                }
+            }
+
+            input[name=entrar]{
+                cursor: pointer;
+                font-size: pxParaRem(20);
+                transition: all 150ms;
+                background-color: $corPrimaria;
+                &:hover{
+                    color:$corPrimaria;
+                    background-color:$corSecundaria;
+                }
+            }
+
+            input[name=criar]{
+                color: $corPrimaria;
+                cursor: pointer;
+                font-size: pxParaRem(20);
+                transition: all 150ms;
+                background-color: #1a1919a9;
+                
+            }
+            
+        }
+    }
+
+    .secao-fundo {
+        width: calc(100% - 590px);
+        height: inherit;
+    }
+}
