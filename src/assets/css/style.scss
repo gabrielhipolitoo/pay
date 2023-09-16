@@ -2,22 +2,68 @@
 @use 'fonts';
 @import 'variaveis';
 
-//funções
+//funções e extends
 @function pxParaRem($valorPx, $ValorRem: 16) {
     @return ($valorPx / $ValorRem) * 1rem;
 }
 
 // fim funções
 
+// class generic
+input {
+    font-size: pxParaRem(18);
+    width: 90%;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid $primaryColor;
+    padding-left: 5px;
+    height: 50px;
+    transition: background 150ms;
 
-.container-login {
+    &:focus {
+        border: 1px solid rgba($primaryColor, 0.6);
+        transition: background 150ms;
+        background-color: rgba($primaryColor, 0.6);
+    }
+}
+
+input[name='entrar'] {
+    cursor: pointer;
+    font-size: pxParaRem(20);
+    transition: background 150ms;
+    background-color: $primaryColor;
+    &:hover {
+        color: $primaryColor;
+        background-color: $secundaryColor;
+    }
+}
+
+input[name='criar'] {
+    color: $primaryColor;
+    cursor: pointer;
+    font-size: pxParaRem(20);
+    transition: background 150ms;
+    background-color: #1a1919a9;
+
+    &:hover {
+        transition: background 150ms;
+        background-color: #1a1919;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $tertiaryColor;
+}
+
+.container {
     display: flex;
     flex-direction: row;
-
     width: 100%;
     height: 100vh;
 
-    .secao-login {
+    .container-login {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -25,15 +71,16 @@
         height: inherit;
         background-color: #ffffff;
 
-        #brand{
+        stronge {
+            color: $tertiaryColor;
             margin-right: auto;
             font-size: pxParaRem(52);
         }
-        #titulo-pagina {
+        h1 {
             font-size: pxParaRem(45);
         }
 
-        .formulario-login {
+        .container-login-form {
             width: 90%;
             display: flex;
             align-items: center;
@@ -41,51 +88,42 @@
             flex-direction: column;
             row-gap: 30px;
             height: inherit;
-
-            input {
-                font-size: pxParaRem(18);
-                width: inherit;
-                border-radius: 5px;
-                outline: none;
-                background-color: transparent;
-                border: 1px solid $corPrimaria;
-                padding-left: 5px;
-                height: 50px;
-                transition: all .5ms;
-
-                &:focus{
-                    border: 1px solid rgba($corPrimaria,.6);
-                    transition: all .5ms;
-                    background-color: rgba($corPrimaria,.6);
-
-                }
-            }
-
-            input[name=entrar]{
-                cursor: pointer;
-                font-size: pxParaRem(20);
-                transition: all 150ms;
-                background-color: $corPrimaria;
-                &:hover{
-                    color:$corPrimaria;
-                    background-color:$corSecundaria;
-                }
-            }
-
-            input[name=criar]{
-                color: $corPrimaria;
-                cursor: pointer;
-                font-size: pxParaRem(20);
-                transition: all 150ms;
-                background-color: #1a1919a9;
-                
-            }
-            
         }
     }
 
-    .secao-fundo {
-        width: calc(100% - 590px);
+    .container-image {
+        width: calc(100% - 550px);
+        background-image: url('https://images.unsplash.com/photo-1536257104079-aa99c6460a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+        background-size: cover;
+        filter: brightness(0.5);
         height: inherit;
+    }
+}
+
+// Login fim
+
+// SingIn
+
+.container-sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 620px;
+    margin: 0 auto;
+    height: 100vh;
+
+    h1 {
+        font-size: pxParaRem(45);
+    }
+
+    .container-sign-up-form {
+        width: 620px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 30px;
+        height: 400px;
     }
 }
