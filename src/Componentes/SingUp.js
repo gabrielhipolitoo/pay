@@ -7,8 +7,13 @@ const SingUp = () => {
 
   const { createUser, error, setError } = useAauthetication();
 
+  const isNameError = error && error.includes("Nome");
+  const isEmailError = error && error.includes("Email");
+  const isPasswordError = error && error.includes("Senhas");
+
   function sendInforNewUser(e) {
-    setError()
+
+    setError();
     e.preventDefault();
 
     const name = valueInputsObj?.name?.length <= 7;
@@ -24,18 +29,13 @@ const SingUp = () => {
     } else {
       createUser(valueInputsObj);
     }
-
   }
   return (
     <section className="container-sign-up">
       <h1>Crie sua conta</h1>
       <form className="container-sign-up-form">
         <input
-          style={
-            JSON.stringify(error)?.includes("nome")
-              ? { border: "1px solid #ff000094" }
-              : {}
-          }
+          className={isNameError? "inputError":""}
           type="text"
           onChange={(e) =>
             setValueInputsObj({
@@ -48,11 +48,8 @@ const SingUp = () => {
           placeholder="Nome completo"
         />
         <input
-          style={
-            JSON.stringify(error)?.includes("Email")
-              ? { border: "1px solid #ff000094" }
-              : {}
-          }
+          className={isEmailError? "inputError":""}
+
           type="text"
           onChange={(e) =>
             setValueInputsObj({
@@ -65,11 +62,8 @@ const SingUp = () => {
           placeholder="Email"
         />
         <input
-          style={
-            JSON.stringify(error)?.includes("Senhas")
-              ? { border: "1px solid #ff000094" }
-              : {}
-          }
+          className={isPasswordError? "inputError":""}
+
           type="password"
           // onBlur={handleValidationInput}
           onChange={(e) =>
@@ -83,11 +77,7 @@ const SingUp = () => {
           placeholder="Senha"
         />
         <input
-          style={
-            JSON.stringify(error)?.includes("Senhas")
-              ? { border: "1px solid #ff000094" }
-              : {}
-          }
+          className={isPasswordError? "inputError":""}
           type="password"
           onChange={(e) =>
             setValueInputsObj({

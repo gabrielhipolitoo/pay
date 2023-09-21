@@ -27,7 +27,9 @@ input {
         background-color: rgba($primaryColor, 0.6);
     }
 }
-
+.inputError{
+    border: 1px solid rgba(255, 0, 0, 0.315);
+}
 input[name='entrar'] {
     cursor: pointer;
     font-size: pxParaRem(20);
@@ -57,6 +59,7 @@ a {
     color: $tertiaryColor;
 }
 
+// end class generic
 .container {
     display: flex;
     flex-direction: row;

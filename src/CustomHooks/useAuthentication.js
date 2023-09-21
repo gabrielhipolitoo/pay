@@ -21,10 +21,11 @@ export const useAauthetication = () => {
 
   function handleErrorMessege(error) {
     const typeError = {
-      "auth/admin-restricted-operation": setError("Preencha os campos"),
-      "auth/missing-password": setError("Digite as senhas"),
-      "auth/email-already-in-use": setError("Email em uso"),
+      "auth/admin-restricted-operation": "Preencha os campos",
+      "auth/missing-password": "Digite as senhas",
+      "auth/email-already-in-use": "Email em uo",
     };
+    setError(typeError[error])
   }
 
   const createUser = async (data) => {
@@ -42,6 +43,7 @@ export const useAauthetication = () => {
       });
     } catch (error) {
       const ErrorMessege = error?.code;
+      console.log(ErrorMessege)
       handleErrorMessege(ErrorMessege);
     }
     setLoading(false);
